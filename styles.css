@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header{
+    background-color: rgb(201, 131, 131);
+    display: flex;
+    justify-content: center;
+    padding: 2vw 0vw;
+    font-size: 4vw;
+    border-bottom: 1px solid black;
+}
+
+.header-container{
+    width: 80%;
+    background-color: rgb(255, 196, 196);
+    display: flex;
+    justify-content: center;
+    border: solid 1px black;
+    padding: 0.5vw 0vw;
+    box-shadow: 5px 5px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+#button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    flex-direction: column;
+}
+
+#grid-layout{
+    font-size: 3vw;
+}
+
+#button-reset{
+    border: solid 1px black;
+    padding: 1vw 4vw;
+    font-size: 3vw;
+    box-shadow: 5px 5px;
+    background-color: rgba(201, 131, 131, 0.1);
+}
+
+.line{
+    flex: 1 0 auto;
+    display: flex;
+}
+
+.item{
+    flex: 1 0 auto;
+}
+
+#sketch-field{
+    width: 40vw;
+    height: 40vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-top: 2vw;
+    box-shadow: 5px 5px;
+}
