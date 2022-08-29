@@ -1,11 +1,3 @@
-// create outer DIV with fixed px width height
-// create x lines of containers (flex set at column with flex 1, so all are equal in size)
-// in each line create x divs (items) set all of them to flex row with flex 1, so all are equal in size
-// get a nodelist of all items
-// foreach item set hover effect
-// at hovering style for specific items should change to XX (choose option-later)
-// reset button resets style.BG for all items back to white
-
 let numberGridItems = 50;
 
 const sketchField = document.getElementById('sketch-field');
@@ -13,39 +5,50 @@ const gridLayout = document.getElementById('grid-layout');
 const resButton = document.getElementById('button-reset');
 const slider = document.getElementById('slider');
 
-slider.addEventListener('change', changeGrid);
+slider.addEventListener('input', updateGridLabel);
+slider.addEventListener('click', changeGrid);
+
+/// Write initial Grid Layout at start
+writeGrid();
+
+gridLayout.textContent = `${numberGridItems} x ${numberGridItems}`;
+
+let sketchItems = document.querySelectorAll('.item');
+
+addHoverEffect();
+
+/// Update GridLayout Label
+function updateGridLabel(){
+    numberGridItems = slider.value;
+    gridLayout.textContent = `${numberGridItems} x ${numberGridItems}`;
+}
 
 function changeGrid(){
     /// implement way that grid change is seen live while sliding
     numberGridItems = slider.value;
     resetColor();
-    updateGridLabel();
+    writeGrid();
+    sketchItems = document.querySelectorAll('.item');
+    addHoverEffect();
+    ///updateGridLabel();
 }
 
-gridLayout.textContent = `${numberGridItems} x ${numberGridItems}`;
+/// Rewrite Grid
+function writeGrid(){
+    sketchField.replaceChildren();
+    
+    for(let i = 0; i < numberGridItems; i++){
+        const gridLine = document.createElement('div');
+        sketchField.appendChild(gridLine);
+    };
 
-function updateGridLabel(){
-    gridLayout.textContent = `${numberGridItems} x ${numberGridItems}`;
-}
+    let gridLines = sketchField.childNodes;
 
-resButton.addEventListener('click', resetColor);
+    gridLines.forEach(line => line.className = "line");
 
-function resetColor(){
-    sketchItems.forEach(item => {
-            item.style.backgroundColor = '';
-        });
-    }
+    gridLines.forEach(addGridItems);
 
-for(let i = 0; i < numberGridItems; i++){
-    const gridLine = document.createElement('div');
-    sketchField.appendChild(gridLine);
 };
-
-const gridLines = sketchField.childNodes;
-
-gridLines.forEach(line => line.className = "line");
-
-gridLines.forEach(addGridItems);
 
 function addGridItems(line){
     for(let j = 0; j < numberGridItems; j++){
@@ -55,13 +58,24 @@ function addGridItems(line){
         };
 };
 
-const sketchItems = document.querySelectorAll('.item');
 
-sketchItems.forEach(item => {
-    item.addEventListener('mouseover', (event) => {
-        event.target.style.backgroundColor = 'rgb(201, 131, 131)';
+/// Hover Effect
+function addHoverEffect(){
+    sketchItems.forEach(item => {
+        item.addEventListener('mouseover', (event) => {
+            event.target.style.backgroundColor = 'rgb(201, 131, 131)';
+        });
     });
-});
+};
+
+
+/// Reset Color
+resButton.addEventListener('click', resetColor);
+function resetColor(){
+    sketchItems.forEach(item => {
+            item.style.backgroundColor = '';
+        });
+    }
 
 
 
