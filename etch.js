@@ -78,7 +78,14 @@ function addHoverEffect(){
         sketchItems.forEach(item => {
             item.removeEventListener('mouseover', addEvent);
             });
-        });  
+        });
+    
+    sketchField.addEventListener('mouseleave', (event) => {
+        sketchItems.forEach(item => {
+            item.removeEventListener('mouseover', addEvent);
+            });
+        }); 
+    
 };
 
 
