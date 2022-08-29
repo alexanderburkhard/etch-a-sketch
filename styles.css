@@ -36,6 +36,10 @@
     
 }
 
+#slider{
+    width: 13vw;
+}
+
 #button-container{
     display: flex;
     justify-content: center;
@@ -54,6 +58,10 @@
     font-size: 3vw;
     box-shadow: 5px 5px;
     background-color: rgba(201, 131, 131, 0.1);
+}
+
+#button-reset:hover{
+    background-color: rgba(201, 131, 131, 0.409);
 }
 
 .line{

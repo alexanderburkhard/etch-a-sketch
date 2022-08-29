@@ -6,17 +6,31 @@
 // at hovering style for specific items should change to XX (choose option-later)
 // reset button resets style.BG for all items back to white
 
-const numberGridItems = 2;
+let numberGridItems = 50;
 
 const sketchField = document.getElementById('sketch-field');
 const gridLayout = document.getElementById('grid-layout');
 const resButton = document.getElementById('button-reset');
+const slider = document.getElementById('slider');
+
+slider.addEventListener('change', changeGrid);
+
+function changeGrid(){
+    /// implement way that grid change is seen live while sliding
+    numberGridItems = slider.value;
+    resetColor();
+    updateGridLabel();
+}
 
 gridLayout.textContent = `${numberGridItems} x ${numberGridItems}`;
 
+function updateGridLabel(){
+    gridLayout.textContent = `${numberGridItems} x ${numberGridItems}`;
+}
+
 resButton.addEventListener('click', resetColor);
 
-function resetColor(event){
+function resetColor(){
     sketchItems.forEach(item => {
             item.style.backgroundColor = '';
         });
