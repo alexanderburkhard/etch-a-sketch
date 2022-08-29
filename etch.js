@@ -24,11 +24,11 @@ function updateGridLabel(){
 }
 
 function changeGrid(){
-    /// implement way that grid change is seen live while sliding
     numberGridItems = slider.value;
-    resetColor();
+    
     writeGrid();
     sketchItems = document.querySelectorAll('.item');
+    resetColor();
     addHoverEffect();
     ///updateGridLabel();
 }
@@ -61,11 +61,24 @@ function addGridItems(line){
 
 /// Hover Effect
 function addHoverEffect(){
-    sketchItems.forEach(item => {
-        item.addEventListener('mouseover', (event) => {
-            event.target.style.backgroundColor = 'rgb(201, 131, 131)';
-        });
+
+    function addEvent(event){
+        event.target.style.backgroundColor = 'rgb(201, 131, 131)';
+    }
+
+    sketchField.addEventListener('mousedown', (event) => {
+        console.log("mousedown");
+        sketchItems.forEach(item => {
+            item.addEventListener('mouseover', addEvent);
+        });  
     });
+
+    sketchField.addEventListener('mouseup', (event) => {
+        console.log("mouseup");
+        sketchItems.forEach(item => {
+            item.removeEventListener('mouseover', addEvent);
+            });
+        });  
 };
 
 
@@ -73,7 +86,7 @@ function addHoverEffect(){
 resButton.addEventListener('click', resetColor);
 function resetColor(){
     sketchItems.forEach(item => {
-            item.style.backgroundColor = '';
+            item.style.backgroundColor = 'white';
         });
     }
 

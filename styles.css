@@ -4,6 +4,18 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+html{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .header{
     background-color: rgb(201, 131, 131);
     display: flex;
@@ -27,18 +39,40 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
+    background-color: rgb(255, 247, 247);
 }
 
 .main-container{
     width: 80%;
     display: flex;
     justify-content: space-around;
-    
+    padding-top: 5vw;
+    padding-bottom: 5vw;    
 }
 
 #slider{
-    width: 13vw;
-}
+    -webkit-appearance:none !important;
+    width: min(200px,15vw);
+    height: 2px;
+    background: black;
+    border: none;
+    outline: none;
+    }
+    
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    width: 30px;
+    height:30px;
+    background: rgb(255, 195, 195);
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    }
+
+#slider input[type="range"]::-webkit-slider-thumb:hover {
+    background: rgb(22, 20, 20);
+    }
 
 #button-container{
     display: flex;
@@ -79,6 +113,58 @@
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    margin-top: 2vw;
     box-shadow: 5px 5px;
+}
+
+.footer{
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(201, 131, 131);
+    border-top: 1px solid black;
+
+}
+
+.footer-container{
+    width: 60%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+
+.copyright-container{
+    border: solid 1px black;
+    padding: 0.5vw 2vw;
+    height: 3vw;
+    box-shadow: 5px 5px;
+    background-color: rgb(255, 196, 196);
+    display: flex;
+    align-items: center;
+}
+
+.github-container{
+    border: solid 1px black;
+    padding: 0.5vw 2vw;
+    box-shadow: 5px 5px;
+    background-color: rgb(255, 196, 196);
+    height: 3vw;
+    display: flex;
+    gap: 0.5vw;
+    align-items: center;
+}
+
+#github-logo{
+    height: 100%;
+    width: auto;
+    position: relative;
+    top: 0;
+    transition: top ease 0.2s;
+}
+
+#github-logo:hover{
+    top: -0.4vw;
 }
